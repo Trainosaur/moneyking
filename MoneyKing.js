@@ -20,21 +20,16 @@ for (let i = 0; i < 18; i++) {
   out += inv;
 
   // inv+=2000;
-  let data = [
-    i,
-    {
-      year: year + i,
-      invested: `${MoneyKing(out)}`,
-      earned: `${MoneyKing(inc)}`,
-      total: `${MoneyKing(total)}`
-    }
-  ];
+  let data = {
+    year: year + i,
+    invested: `${MoneyKing(out)}`,
+    earned: `${MoneyKing(inc)}`,
+    total: `${MoneyKing(total)}`
+  };
 
   // console.log([...data]);
   console.log(
-    `${data[1].year} \t ${data[1].invested} \t\t ${data[1].earned} \t\t ${
-      data[1].total
-    }`
+    `${data.year} \t ${data.invested} \t\t ${data.earned} \t\t ${data.total}`
   );
 
   total = roi(total + inv);
