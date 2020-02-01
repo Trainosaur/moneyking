@@ -1,10 +1,10 @@
-let inv = 12000;
-let total = inv;
-let roi = i => i * 1.12;
-let out = 0;
-let inc = 0;
+let inv = 12000; // Amount to be invested
+let total = inv; // Total money in play, invested+earned
+let roi = i => i * 1.12; // Return on investment
+let out = 0; // Money out: compounded annual amount invested
+let inc = 0; // Income: compounded annual amount earned
 
-const ipad = (i,p,v) => `${v.repeat(p-`${i}`.length)}${i}`;
+const ipad = (i, p, v) => `${v.repeat(p - `${i}`.length)}${i}`;
 
 const usd = new Intl.NumberFormat('en-US', {
   style: 'currency',
