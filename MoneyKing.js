@@ -1,20 +1,42 @@
 let inv = 12000;
-let total = 12000;
-let ret = 1.12;
-let out = inv+total;
+let total = inv;
+let roi = i => i * 1.12;
+let out = 0;
 let inc = 0;
 
-const nextYear = (t,p,r) => (t+p)*r;
+const usd = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD'
+});
 
+const MoneyKing = cash => (cash ? usd.format(cash).split('.')[0] : 'N/A\t');
+//const MoneyKing = cash => cash.toFixed(0);
 
-for(let i = 0; i < 17; i++) {
-	inv+=2000;
-	out+=inv;
-	total = nextYear(total, inv, ret);
+const year = new Date().getFullYear();
+
+console.log(`YEAR \t INVESTED \t\t EARNED \t\t TOTAL`);
+
+for (let i = 0; i < 18; i++) {
+  out += inv;
+
+  // inv+=2000;
+  let data = [
+    i,
+    {
+      year: year + i,
+      invested: `${MoneyKing(out)}`,
+      earned: `${MoneyKing(inc)}`,
+      total: `${MoneyKing(total)}`
+    }
+  ];
+
+  // console.log([...data]);
+  console.log(
+    `${data[1].year} \t ${data[1].invested} \t\t ${data[1].earned} \t\t ${
+      data[1].total
+    }`
+  );
+
+  total = roi(total + inv);
+  inc = total - out;
 }
-
-inc = total-out;
-
-console.log('Total', `$${total.toFixed(2)}`);
-console.log('Invested', `$${out.toFixed(2)}`);
-console.log('Earned', `$${inc.toFixed(2)}`);
