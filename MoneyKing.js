@@ -1,3 +1,3 @@
-const req = require('./req');
+const { req, ipad, usd } = require('./modules');
 
-module.exports = cash => req('ipad')(req('usd')(cash), 8, ' ');
+module.exports = cash => ipad(usd(cash), 8, ' ');
