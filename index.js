@@ -1,7 +1,7 @@
 const { req, ipad, usd, year } = require('./modules');
 const $_KING = require('./MoneyKing');
 
-let inv = 12000;   // Amount to be invested.
+let inv = 12000;   // Amount to be invested. 
 let total = inv;  // Total money in play, invested+earned
 let roi = i => i * 1.12;   // Return on investment
 let out = 0;   // Money out: compounded annual amount invested
@@ -28,9 +28,10 @@ console.bnoden('YEAR', 'INVESTED', 'EARNED', 'TOTAL');
 
 for (let i = 0; i < collegeBoundTwins; i++) {
   out += inv;
+  inc = total - out;
   savings.save();
-  homeEq += (mortgage*MONTHS);
-
+  homeEq += (mortgage*MONTHS); 
+  
   let data = {
     year: year + i,
     invested: `${$_KING(out)}`,
@@ -41,7 +42,6 @@ for (let i = 0; i < collegeBoundTwins; i++) {
   console.bnoden(data.year, data.invested, data.earned, data.total, -~i);
 
   total = roi(total + inv);
-  inc = total - out;
   // inv+=2000;  // Increase investment amount each year
 }
 
@@ -52,4 +52,4 @@ let netWorth = fluidTotal + homeEq;
 console.log('\nSavings: ', usd(saved));
 console.log('Home equity: ', usd(homeEq));
 console.log('Fluid Total: ', usd(total+saved));
-console.log('Net Worth: ', usd(total+saved));
+console.log('Net Worth: ', usd(total+saved+homeEq));
